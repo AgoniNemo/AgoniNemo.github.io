@@ -20,9 +20,10 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 </script>
+
 </head>
 <body class="">
-<audio src="music.mp3" autoplay="autoplay" loop="loop"></audio>
+<audio src="antiquity.mp3" autoplay="autoplay"></audio>
 <canvas id="sakura"></canvas>
 <!-- Wrapper -->
 <div id="wrapper">
@@ -42,6 +43,18 @@
 </div>
 <!-- Scripts -->
 <!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+<script>
+    var audio = document.getElementsByTagName("audio")[0];
+    if(audio){
+        audio.loop = false;
+        audio.addEventListener('ended', function () {
+            let currentSrc = audio.currentSrc.split("/").pop();
+            let scr = (currentSrc == "music.mp3") ? "antiquity.mp3" : "music.mp3";
+            audio.src=scr;
+            audio.play();
+        }, false);
+    }
+</script>
 <script>
 	if ('addEventListener' in window) {
 		window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
